@@ -7,7 +7,7 @@
 :root {
     --dark: #070707;
     --sizeIndex: calc(1vw + 1vh);
-    --transition: .75s cubic-bezier(.77,.13,.63,.94)
+    --transition: .75s cubic-bezier(.2,.6,.0,1)
 }
 @font-face {
     font-family: raleway_m;
@@ -27,7 +27,7 @@ color: white;
 font-family: raleway_m, sans-serif;
 overflow: hidden;
 line-height: 1.8;
-/* font-size: calc(var(--sizeIndex) * 0.8); */
+
 }
 
 .slider{
@@ -74,14 +74,20 @@ will-change: transform;
     transform: rotate(-15deg) scale(1.45);
     box-shadow: rgb(0 0 0 / .75) 0 0 0 10000px;
 }
-
-.description{
+.description {
     position:absolute;
 font-size: calc(var(--sizeIndex) * 0.8);
 top: 20vh;
 left: 8vw;
 max-width: 24vw;
+transition: opacity var(--transition), transform var(--transition)
+}
+
+
+.description p {
 opacity: .9;
+transition: transform var(--transition);
+transition-duration: 3s;
 }
 
 .logo{
@@ -90,5 +96,15 @@ opacity: .9;
     display: inline-block;
     background: linear-gradient(45deg, darkMagenta, tomato, violet);
 -webkit-background-clip: text;
+background-clip: text;
 -webkit-text-fill-color: transparent;
+}
+
+.description.hidden{
+    opacity: 0;
+    transform: translateY(5vh);
+}
+
+.description.hidden p{
+    transform: translateY(2vh);
 }
